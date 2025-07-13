@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Dashboard</title>
+  <style>
+    :root {
+      --brand1: #00b4db;
+      --brand2: #0083b0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, var(--brand1), var(--brand2));
+      padding: 20px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .top-bar {
+      background: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .user {
+      font-weight: bold;
+      color: #0083b0;
+    }
+
+    .contact {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 20px;
+      padding: 25px;
+      margin: 0 auto 30px auto;
+      max-width: 1000px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.8s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0083b0;
+    }
+
+    .class-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .class-item {
+      background: #f4fbff;
+      border-left: 6px solid var(--brand1);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+      transition: 0.25s;
+      width: 180px;
+      text-align: center;
+    }
+
+    .class-item:hover {
+      background: #dff5ff;
+      transform: scale(1.04);
+    }
+
+    .timetable {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      background: #fefefe;
+    }
+
+    th {
+      background-color: var(--brand1);
+      color: white;
+    }
+
+    td:hover {
+      background-color: #e1f5fe;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 700px) {
+      .class-item {
+        width: 100%;
+      }
+
+      th, td {
+        font-size: 13px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="user">👩‍🏫 Teacher: Prof. Siddhartha Reddy</div>
+    <div class="contact">📞 support@digitab.edu | ☎️ +91 98765 43210</div>
+  </div>
+
+  <div class="section">
+    <h2>📘 My Assigned Classes</h2>
+    <div class="class-list">
+      <div class="class-item" onclick="openClassPortal('1/4 CSD - A', 'Programming in C++', 'A', '1st Year')">1/4 CSD - A</div>
+      <div class="class-item" onclick="openClassPortal('1/4 CSM - A', 'Python Programming', 'A', '1st Year')">1/4 CSM - A</div>
+      <div class="class-item" onclick="openClassPortal('2/4 CIVIL - C', 'Structural Analysis', 'C', '2nd Year')">2/4 CIVIL - C</div>
+      <div class="class-item" onclick="openClassPortal('3/4 ECE - B', 'Signals & Systems', 'B', '3rd Year')">3/4 ECE - B</div>
+      <div class="class-item" onclick="openClassPortal('4/4 MECH - D', 'Thermodynamics', 'D', '4th Year')">4/4 MECH - D</div>
+
+      <div class="class-item" style="border-left: 6px solid orange; background: #fff3e0;"
+           onclick="window.location.href='leave.html'">
+        📝 Apply for Leave
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📅 My Time Table</h2>
+    <div class="timetable">
+      <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>9-10</th>
+            <th>10-11</th>
+            <th>11-12</th>
+            <th>1-2</th>
+            <th>2-3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mon</td>
+            <td>1/4 CSD - A</td><td>Break</td><td>CSM - A</td><td>Meeting</td><td>Civil - C</td>
+          </tr>
+          <tr>
+            <td>Tue</td>
+            <td>CSM - A</td><td>Civil - C</td><td>Free</td><td>ECE - B</td><td>Mech - D</td>
+          </tr>
+          <tr>
+            <td>Wed</td>
+            <td>Meeting</td><td>CSD - A</td><td>Break</td><td>CSM - A</td><td>ECE - B</td>
+          </tr>
+          <tr>
+            <td>Thu</td>
+            <td>Free</td><td>Civil - C</td><td>CSM - A</td><td>Meeting</td><td>Free</td>
+          </tr>
+          <tr>
+            <td>Fri</td>
+            <td>CSD - A</td><td>ECE - B</td><td>Free</td><td>Mech - D</td><td>Free</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function openClassPortal(className, subject, section, year) {
+      const url = `card.html?class=${encodeURIComponent(className)}&subject=${encodeURIComponent(subject)}&section=${encodeURIComponent(section)}&year=${encodeURIComponent(year)}`;
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+</html>

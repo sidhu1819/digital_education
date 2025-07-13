@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notes Portal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff3e0;
+      color: #4e342e;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #fb8c00;
+    }
+
+    .note-section {
+      margin-top: 40px;
+    }
+
+    .note-box {
+      background: #fff;
+      border-left: 5px solid #fb8c00;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+      margin: 20px auto;
+      text-align: left;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #fb8c00;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      background: #ffa726;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="subjectTitle">Subject Notes</h1>
+
+  <div class="note-section">
+    <div class="note-box">
+      <h3>📄 Write Notes</h3>
+      <p>This section is for writing your own notes about the subject.</p>
+    </div>
+
+    <div class="note-box">
+      <h3>📚 Read Notes</h3>
+      <p>Read uploaded material or teacher notes here.</p>
+    </div>
+  </div>
+
+  <a href="student_portal.html" class="back-link">⬅ Back to Dashboard</a>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const subject = params.get("subject");
+
+    if (subject) {
+      document.getElementById("subjectTitle").textContent = subject + " - Notes Portal";
+    }
+  </script>
+
+</body>
+</html>

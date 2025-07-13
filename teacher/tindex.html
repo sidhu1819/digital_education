@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Admin Login</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #6dd5ed, #2193b0);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .login-container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      animation: slideIn 1.2s ease-out;
+      position: relative;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #2193b0;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #6dd5ed;
+      box-shadow: 0 0 5px #6dd5ed;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background: #2193b0;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background: #6dd5ed;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #6dd5ed;
+    }
+
+    .icon {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border-radius: 50%;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      animation: popIn 1s ease forwards;
+    }
+
+    .icon img {
+      width: 50px;
+      height: 50px;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 400px) {
+      .login-container {
+        width: 90%;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Teacher Icon" />
+    </div>
+    <h2>Teacher Admin Login</h2>
+    <form onsubmit="login(event)">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
+
+<script>
+  function login(event) {
+    event.preventDefault(); // Prevent form from submitting normally
+    // You can add actual validation here
+    window.location.href = "teacher.html"; // Redirect to dashboard
+  }
+</script>
+
+
+</body>
+</html>

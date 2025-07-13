@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to DigiTab Portal</title>
+  <style>
+    :root {
+      --brand1: #00b4db;
+      --brand2: #0083b0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, var(--brand1), var(--brand2));
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 450px;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #0083b0;
+    }
+
+    p {
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background: var(--brand2);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--brand1);
+      transform: scale(1.05);
+    }
+
+    .icon {
+      margin-bottom: 25px;
+    }
+
+    .icon img {
+      width: 80px;
+      height: 80px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      .btn {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="icon">
+      <img src="https://cdn-icons-png.flaticon.com/512/9068/9068756.png" alt="Portal Icon" />
+    </div>
+    <h1>DigiTab Portal</h1>
+    <p>Welcome! Please select your role to continue:</p>
+    <div class="btn-group">
+      <button class="btn" onclick="location.href='teacher/tindex.html'">👩‍🏫 Teacher/Admin Login</button>
+      <button class="btn" onclick="location.href='student/sindex.html'">👨‍🎓 Student Login</button>
+    </div>
+  </div>
+
+</body>
+</html>
