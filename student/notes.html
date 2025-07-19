@@ -31,6 +31,18 @@
       margin: 20px auto;
       text-align: left;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .note-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .note-box h3 {
+      margin: 0 0 10px 0;
+      color: #e65100;
     }
 
     .back-link {
@@ -54,9 +66,9 @@
   <h1 id="subjectTitle">Subject Notes</h1>
 
   <div class="note-section">
-    <div class="note-box">
+    <div class="note-box" onclick="window.location.href='draw.html'">
       <h3>📄 Write Notes</h3>
-      <p>This section is for writing your own notes about the subject.</p>
+      <p>This section is for writing your own notes about the subject. Click to open the drawing board.</p>
     </div>
 
     <div class="note-box">
