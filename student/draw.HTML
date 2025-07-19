@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drawing Pad</title>
+  <style>
+    :root {
+      --brand1: #ffa726;
+      --brand2: #fb8c00;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, var(--brand1), var(--brand2));
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .toolbar {
+      background: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    canvas {
+      border: 3px solid white;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+      background: rgb(107, 62, 62);
+      touch-action: none;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input[type="color"], input[type="range"] {
+      cursor: pointer;
+    }
+
+    button {
+      padding: 8px 16px;
+      background: var(--brand2);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: var(--brand1);
+    }
+
+    .back-link {
+      margin-top: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎨 Notepad Drawing Board</h1>
+
+  <div class="toolbar">
+    <label for="color">Color:</label>
+    <input type="color" id="color" value="#000000">
+
+    <label for="size">Brush Size:</label>
+    <input type="range" id="size" min="1" max="30" value="5">
+
+    <button onclick="clearCanvas()">🧼 Clear</button>
+    <button onclick="saveCanvas()">💾 Save</button>
+  </div>
+
+  <canvas id="canvas" width="800" height="500"></canvas>
+
+  <a href="student_portal.html" class="back-link">⬅ Back to Dashboard</a>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const colorPicker = document.getElementById("color");
+    const sizeSlider = document.getElementById("size");
+
+    let painting = false;
+
+    function startPosition(e) {
+      painting = true;
+      draw(e);
+    }
+
+    function endPosition() {
+      painting = false;
+      ctx.beginPath();
+    }
+
+    function draw(e) {
+      if (!painting) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX || e.touches?.[0]?.clientX) - rect.left;
+      const y = (e.clientY || e.touches?.[0]?.clientY) - rect.top;
+
+      ctx.lineWidth = sizeSlider.value;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = colorPicker.value;
+
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function saveCanvas() {
+      const link = document.createElement("a");
+      link.download = "my_drawing.png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+
+    // Mouse Events
+    canvas.addEventListener("mousedown", startPosition);
+    canvas.addEventListener("mouseup", endPosition);
+    canvas.addEventListener("mousemove", draw);
+
+    // Touch Events
+    canvas.addEventListener("touchstart", startPosition);
+    canvas.addEventListener("touchend", endPosition);
+    canvas.addEventListener("touchmove", function(e) {
+      e.preventDefault(); // Prevent scrolling while drawing
+      draw(e);
+    }, { passive: false });
+  </script>
+
+</body>
+</html>
